@@ -27541,29 +27541,48 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const ToggleableForm = function() {
+var _react = require("react");
+var _s = $RefreshSig$();
+const ToggleableForm = function({ onSubmit  }) {
+    _s();
+    const [isFormVisible, setIsFormVisible] = (0, _react.useState)(false);
+    const [productInputFilledIn, setProductInputFilledIn] = (0, _react.useState)("");
+    const [priceInputFilledIn, setPriceInputFilledIn] = (0, _react.useState)("");
+    const [quantityInputFilledIn, setQuantityInputFilledIn] = (0, _react.useState)("0");
+    const handleToggleFormVisible = (e)=>{
+        setIsFormVisible(!isFormVisible);
+    };
+    const handleAddProduct = (e)=>{
+        e.preventDefault();
+        const newProduct = {
+            "title": productInputFilledIn,
+            "price": priceInputFilledIn,
+            "quantity": quantityInputFilledIn
+        };
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "add-form",
+        className: isFormVisible ? "add-form visible" : "add-form",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                     className: "button add-product-button",
+                    onClick: handleToggleFormVisible,
                     children: "Add A Product"
                 }, void 0, false, {
                     fileName: "src/components/ToggleableForm.js",
-                    lineNumber: 4,
+                    lineNumber: 22,
                     columnNumber: 10
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/ToggleableForm.js",
-                lineNumber: 4,
+                lineNumber: 22,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "Add Product"
             }, void 0, false, {
                 fileName: "src/components/ToggleableForm.js",
-                lineNumber: 5,
+                lineNumber: 23,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -27576,22 +27595,23 @@ const ToggleableForm = function() {
                                 children: "Product Name"
                             }, void 0, false, {
                                 fileName: "src/components/ToggleableForm.js",
-                                lineNumber: 8,
+                                lineNumber: 26,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 type: "text",
                                 id: "product-name",
-                                value: ""
+                                onChange: (e)=>setProductInputFilledIn(e.target.value),
+                                value: productInputFilledIn
                             }, void 0, false, {
                                 fileName: "src/components/ToggleableForm.js",
-                                lineNumber: 9,
+                                lineNumber: 27,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/ToggleableForm.js",
-                        lineNumber: 7,
+                        lineNumber: 25,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27602,22 +27622,23 @@ const ToggleableForm = function() {
                                 children: "Price"
                             }, void 0, false, {
                                 fileName: "src/components/ToggleableForm.js",
-                                lineNumber: 13,
+                                lineNumber: 31,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 type: "text",
                                 id: "product-price",
-                                value: ""
+                                onChange: (e)=>setPriceInputFilledIn(e.target.value),
+                                value: priceInputFilledIn
                             }, void 0, false, {
                                 fileName: "src/components/ToggleableForm.js",
-                                lineNumber: 14,
+                                lineNumber: 32,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/ToggleableForm.js",
-                        lineNumber: 12,
+                        lineNumber: 30,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27628,22 +27649,23 @@ const ToggleableForm = function() {
                                 children: "Quantity"
                             }, void 0, false, {
                                 fileName: "src/components/ToggleableForm.js",
-                                lineNumber: 18,
+                                lineNumber: 36,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 type: "text",
                                 id: "product-quantity",
-                                value: ""
+                                onChange: (e)=>setQuantityInputFilledIn(e.target.value),
+                                value: quantityInputFilledIn
                             }, void 0, false, {
                                 fileName: "src/components/ToggleableForm.js",
-                                lineNumber: 19,
+                                lineNumber: 37,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/ToggleableForm.js",
-                        lineNumber: 17,
+                        lineNumber: 35,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27651,39 +27673,45 @@ const ToggleableForm = function() {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                                 className: "button",
-                                children: "Add"
-                            }, void 0, false, {
+                                children: [
+                                    "Add onSubmit=",
+                                    handleAddProduct,
+                                    " "
+                                ]
+                            }, void 0, true, {
                                 fileName: "src/components/ToggleableForm.js",
-                                lineNumber: 23,
+                                lineNumber: 41,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                                 className: "button",
+                                onClick: handleToggleFormVisible,
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/ToggleableForm.js",
-                                lineNumber: 24,
+                                lineNumber: 42,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/ToggleableForm.js",
-                        lineNumber: 22,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/ToggleableForm.js",
-                lineNumber: 6,
+                lineNumber: 24,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/ToggleableForm.js",
-        lineNumber: 3,
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 };
+_s(ToggleableForm, "JDDU96nHJRKtGigkVp/FMIVAgxM=");
 _c = ToggleableForm;
 exports.default = ToggleableForm;
 var _c;
@@ -27694,6 +27722,6 @@ $RefreshReg$(_c, "ToggleableForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["1xC6H","ShInH","8lqZg"], "8lqZg", "parcelRequiree8ef")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}]},["1xC6H","ShInH","8lqZg"], "8lqZg", "parcelRequiree8ef")
 
 //# sourceMappingURL=index.975ef6c8.js.map

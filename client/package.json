@@ -16,10 +16,13 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.31.8",
     "parcel": "^2.7.0",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "http-proxy-middleware": "^2.0.6"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "react": "^18.2.0",
+    "moment": "^2.29.4",
     "react-dom": "^18.2.0"
   }
 }
