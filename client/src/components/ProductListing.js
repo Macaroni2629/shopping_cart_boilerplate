@@ -1,14 +1,20 @@
 import EditableProduct from "./EditableProduct"
 
-const ProductListing = function() {
+const ProductListing = function({ products, onAddToCart }) {
   return (
     <div className="product-listing">
       <h2>Products</h2>
-      <EditableProduct name="Amazon Kindle E-reader" price="$79.99" quantity="5"/>
-      <EditableProduct name="Apple 10.5-Inch iPad Pro" price="$649.99" quantity="2"/>
-      <EditableProduct name="Yamaha Portable Keyboard" price="$155.99" quantity="0"/>
+      {products.map(product =>
+        <EditableProduct
+          key={product._id}
+          id={product._id}
+          name={product.title}
+          price={product.price}
+          quantity={product.quantity}
+          onAddToCart={onAddToCart}
+        />
+      )}
     </div>
-
   )
 }
 
