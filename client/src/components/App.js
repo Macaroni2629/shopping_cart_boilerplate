@@ -5,10 +5,10 @@ import CartHeader from "./CartHeader"
 import ProductListing from "./ProductListing"
 import ToggleableForm from "./ToggleableForm"
 
+
+
 const App = function() {
   const [products, setProducts] = useState([])
-
-  // Might useReducer in the future because "cartTotal" would be dependant on cart
   const [cart, setCart] = useState([])
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const App = function() {
     }
 
     getCartItems()
-  })
+  }, [])
 
   const handleSubmit = async (newProduct, callback) => {
     try {
@@ -56,15 +56,32 @@ const App = function() {
     }
   }
 
-  const calcTotal = () => {
+  const handleEditingProduct = async (id, updatedProduct, callback) => {
+    try {
+      const response = await axios.put(`/api/products/${id}`, updatedProduct)
+      setProducts(products.map(product => {
+        if (product._id === id) {
+          return response.data
+        } else {
+          return product
+        }
+      }))
 
+      if (callback) {
+        callback()
+      }
+    } catch (e) {
+      console.error(`Problem Editing Product: ${e}`)
+    }
   }
+
+
 
   return (
     <div>
-      <CartHeader total={calcTotal}/>
+      <CartHeader cart={cart}/>
       <main>
-        <ProductListing products={products} onAddToCart={handleAddingProductCart}/>
+        <ProductListing products={products} onAddToCart={handleAddingProductCart} onEdit={handleEditingProduct}/>
         <ToggleableForm onSubmit={handleSubmit} />
       </main>
     </div>

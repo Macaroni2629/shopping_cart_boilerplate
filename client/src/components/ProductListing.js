@@ -1,6 +1,6 @@
 import EditableProduct from "./EditableProduct"
 
-const ProductListing = function({ products, onAddToCart }) {
+const ProductListing = function({ products, onAddToCart, onEdit }) {
   return (
     <div className="product-listing">
       <h2>Products</h2>
@@ -12,6 +12,7 @@ const ProductListing = function({ products, onAddToCart }) {
           price={product.price}
           quantity={product.quantity}
           onAddToCart={onAddToCart}
+          onEdit={onEdit}
         />
       )}
     </div>

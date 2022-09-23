@@ -1,6 +1,15 @@
-const EditableProduct = function({ id, name, price, quantity, onAddToCart}) {
+import { useState } from "react"
+import EditableProductForm from "./EditableProductForm"
+
+const EditableProduct = function({ id, name, price, quantity, onAddToCart, onEdit }) {
+  const [edit, setEdit] = useState(false)
+
   const handleCart = () => {
     onAddToCart({ productId: id })
+  }
+
+  const toggleEdit = () => {
+    setEdit(!edit)
   }
 
   return (
@@ -11,10 +20,17 @@ const EditableProduct = function({ id, name, price, quantity, onAddToCart}) {
         <p className="quantity">{quantity} left in stock</p>
         <div className="actions product-actions">
           <a className="button add-to-cart" onClick={handleCart}>Add to Cart</a>
-          <a className="button edit">Edit</a>
+          <a className="button edit" onClick={toggleEdit}>Edit</a>
         </div>
         <a className="delete-button"><span>X</span></a>
       </div>
+      {edit ? <EditableProductForm
+                id={id}
+                amount={price}
+                name={name}
+                quant={quantity}
+                onEdit={onEdit}
+                toggle={toggleEdit} /> : ""}
     </div>
   )
 }

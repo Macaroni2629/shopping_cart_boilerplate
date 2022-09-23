@@ -1,10 +1,3 @@
-/* 
-Supposed to do:
-
-include react stuff
-render app
-*/
-
 import React from "react"
 import ReactDOM from "react-dom/client"
 
