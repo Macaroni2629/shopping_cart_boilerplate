@@ -45,8 +45,23 @@ const App = function() {
   const handleAddingProductCart = async (product) => {
     try {
       const response = await axios.post("/api/add-to-cart", product)
-      console.log(response.data)
-      setCart(cart.concat(response.data.item))
+      const presentOrNot = cart.find(productA => {
+        return productA._id === response.data.item._id
+        }
+      )
+      
+      if (presentOrNot) {
+        setCart(cart.map(product => {
+          if (product._id === response.data.item._id) {
+            return response.data.item
+          } else {
+            return product
+          }
+        }))
+      } else {
+        setCart(cart.concat(response.data.item))
+      }
+
       setProducts(products.map(prod =>
         prod._id === product.productId
         ? response.data.product
@@ -75,13 +90,25 @@ const App = function() {
     }
   }
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/api/products/${id}`)
+      setProducts(products.filter(({ _id }) => {
+        return _id !== id
+      }))
+    } catch (e) {
+      console.error(`Problem Deleting Product: ${e}`)
+    }
+    
+  }
+
 
 
   return (
     <div>
-      <CartHeader cart={cart}/>
+      <CartHeader cart={cart} setCart={setCart}/>
       <main>
-        <ProductListing products={products} onAddToCart={handleAddingProductCart} onEdit={handleEditingProduct}/>
+        <ProductListing products={products} onAddToCart={handleAddingProductCart} onEdit={handleEditingProduct} onDelete={handleDelete}/>
         <ToggleableForm onSubmit={handleSubmit} />
       </main>
     </div>

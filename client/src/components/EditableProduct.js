@@ -1,7 +1,7 @@
 import { useState } from "react"
 import EditableProductForm from "./EditableProductForm"
 
-const EditableProduct = function({ id, name, price, quantity, onAddToCart, onEdit }) {
+const EditableProduct = function({ id, name, price, quantity, onAddToCart, onEdit, onDelete }) {
   const [edit, setEdit] = useState(false)
 
   const handleCart = () => {
@@ -22,7 +22,7 @@ const EditableProduct = function({ id, name, price, quantity, onAddToCart, onEdi
           <a className="button add-to-cart" onClick={handleCart}>Add to Cart</a>
           <a className="button edit" onClick={toggleEdit}>Edit</a>
         </div>
-        <a className="delete-button"><span>X</span></a>
+        <a className="delete-button" onClick={() => onDelete(id)}><span>X</span></a>
       </div>
       {edit ? <EditableProductForm
                 id={id}
@@ -30,7 +30,8 @@ const EditableProduct = function({ id, name, price, quantity, onAddToCart, onEdi
                 name={name}
                 quant={quantity}
                 onEdit={onEdit}
-                toggle={toggleEdit} /> : ""}
+                toggle={toggleEdit} /> : ""
+                }
     </div>
   )
 }
