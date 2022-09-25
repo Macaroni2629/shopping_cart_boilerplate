@@ -19,7 +19,9 @@ const EditableProduct = function({ id, name, price, quantity, onAddToCart, onEdi
         <p className="price">${price}</p>
         <p className="quantity">{quantity} left in stock</p>
         <div className="actions product-actions">
-          <a className="button add-to-cart" onClick={handleCart}>Add to Cart</a>
+            { quantity ? <a className="button add-to-cart" onClick={handleCart}>Add to Cart</a> :
+                <a className="button add-to-cart disabled" onClick={handleCart}>Add to Cart</a>
+            }
           <a className="button edit" onClick={toggleEdit}>Edit</a>
         </div>
         <a className="delete-button" onClick={() => onDelete(id)}><span>X</span></a>
@@ -32,6 +34,7 @@ const EditableProduct = function({ id, name, price, quantity, onAddToCart, onEdi
                 onEdit={onEdit}
                 toggle={toggleEdit} /> : ""
                 }
+
     </div>
   )
 }

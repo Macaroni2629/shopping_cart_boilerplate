@@ -30506,7 +30506,7 @@ $RefreshReg$(_c, "CartHeader");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./CartLayout":"kiQor","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","axios":"jo6P5"}],"kiQor":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","axios":"jo6P5","./CartLayout":"kiQor","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"kiQor":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$c828 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -30909,14 +30909,22 @@ const EditableProduct = function({ id , name , price , quantity , onAddToCart , 
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "actions product-actions",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                            quantity ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                                 className: "button add-to-cart",
                                 onClick: handleCart,
                                 children: "Add to Cart"
                             }, void 0, false, {
                                 fileName: "src/components/EditableProduct.js",
                                 lineNumber: 22,
-                                columnNumber: 11
+                                columnNumber: 26
+                            }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                className: "button add-to-cart disabled",
+                                onClick: handleCart,
+                                children: "Add to Cart"
+                            }, void 0, false, {
+                                fileName: "src/components/EditableProduct.js",
+                                lineNumber: 23,
+                                columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                                 className: "button edit",
@@ -30924,7 +30932,7 @@ const EditableProduct = function({ id , name , price , quantity , onAddToCart , 
                                 children: "Edit"
                             }, void 0, false, {
                                 fileName: "src/components/EditableProduct.js",
-                                lineNumber: 23,
+                                lineNumber: 25,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -30940,12 +30948,12 @@ const EditableProduct = function({ id , name , price , quantity , onAddToCart , 
                             children: "X"
                         }, void 0, false, {
                             fileName: "src/components/EditableProduct.js",
-                            lineNumber: 25,
+                            lineNumber: 27,
                             columnNumber: 67
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/EditableProduct.js",
-                        lineNumber: 25,
+                        lineNumber: 27,
                         columnNumber: 9
                     }, this)
                 ]
@@ -30963,7 +30971,7 @@ const EditableProduct = function({ id , name , price , quantity , onAddToCart , 
                 toggle: toggleEdit
             }, void 0, false, {
                 fileName: "src/components/EditableProduct.js",
-                lineNumber: 27,
+                lineNumber: 29,
                 columnNumber: 15
             }, this) : ""
         ]
